@@ -67,3 +67,23 @@ export function projectList(projectList) {
         projectList
     }
 }
+
+export function setIsLoadingFlag(flagValue) {
+    return {
+        type: "setIsLoadingFlag",
+        flagValue
+    }
+}
+
+export function getProjectList_ASYNC() {
+    return {
+        type: "getProjectList_ASYNC"
+    }
+}
+
+export function ASYNC_REQUEST_FAILED(error) {
+    return {
+        type: "ASYNC_REQUEST_FAILED",
+        error
+    }
+}

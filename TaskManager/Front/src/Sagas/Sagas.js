@@ -28,14 +28,26 @@ function* watchRequestUnitList(){
 }
 */
 
+function* watchgetProjects(){
+    yield takeEvery('getProjectList_ASYNC',getProjects);
+}
+
+function* getProjects(action) {
+    try {
+        const responce = yield call(fetch, "url", []);
+        const retrievedProjects = JSON.parse(responce.json());
+        yield put(ActionCreators.projectList(retrievedProjects));
+        yield put(ActionCreators.setIsLoadingFlag(false));
+    } catch (error) {
+        yield put(ActionCreators.ASYNC_REQUEST_FAILED(error));
+        yield put(ActionCreators.setIsLoadingFlag(false));
+    }
+}
+
 
 function* rootSaga() {
     yield all([
-        /*
-        watchRequestUnitList(),
-        watchRequestFactionsList(),
-        watchRequestDetachmentsList(),
-        watchRequestChapterTacticsList()*/
+        watchgetProjects()
     ])
   }
 

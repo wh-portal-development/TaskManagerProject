@@ -12,7 +12,9 @@ const Reducers = combineReducers(
         projectList,
         project,
         user,
-        commentText
+        commentText,
+        isLoading,
+        error
     }
 );
 
@@ -94,6 +96,24 @@ function projectList(state = [], action) {
     switch(action.type) {
         case "projectList":
             return action.projectList
+        default:
+            return state;
+    }
+}
+
+function isLoading(state = true, action) {
+    switch(action.type) {
+        case "setIsLoadingFlag":
+            return action.flagValue
+        default:
+            return state;
+    }
+}
+
+function error(state = false, action) {
+    switch(action.type) {
+        case "ASYNC_REQUEST_FAILED":
+            return action.error
         default:
             return state;
     }
