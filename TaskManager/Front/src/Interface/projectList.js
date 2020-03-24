@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import * as actionCreators from "../Store/actionCreators.js";
 
-class UnitSelection extends Component {
+class projectList extends Component {
     constructor(props) {
         super(props);
     }
@@ -51,9 +51,9 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const containerUnitSelection = connect(
+const containerProjectList = connect(
     mapStateToProps,
     mapDispatchToProps
-)(UnitSelection);
+)(projectList);
 
-export default containerUnitSelection;
+export default containerProjectList;

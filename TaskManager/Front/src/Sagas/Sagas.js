@@ -4,12 +4,6 @@ import * as ActionCreators from "../Store/actionCreators.js";
 const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
 
-import { put, takeEvery, all, call } from 'redux-saga/effects';
-import * as ActionCreators from "../Store/ActionsCreators.js";
-import * as utils from "../Scripts/CommonFunctions.js";
-
-const delay = (ms) => new Promise(res => setTimeout(res, ms))
-
 /* SAMPLE
 function* requestUnitList(action) {
     try {
@@ -34,7 +28,7 @@ function* watchgetProjects(){
 
 function* getProjects(action) {
     try {
-        const responce = yield call(fetch, "url", []);
+        const responce = yield call(fetch, "http://localhost:59257/projects/all");
         const retrievedProjects = JSON.parse(responce.json());
         yield put(ActionCreators.projectList(retrievedProjects));
         yield put(ActionCreators.setIsLoadingFlag(false));

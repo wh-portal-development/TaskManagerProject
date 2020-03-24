@@ -19,13 +19,6 @@ export function taskCommentsList(commentsList) {
     }
 }
 
-export function taskCommentsList(commentsList) {
-    return {
-        type: "taskCommentsList",
-        commentsList
-    }
-}
-
 export function lastPageNumber(lastPageNumber) {
     return {
         type: "lastPageNumber",

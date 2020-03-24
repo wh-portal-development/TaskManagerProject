@@ -6,15 +6,15 @@ import { Provider } from 'react-redux'
 import configureStore from './Store/configureStore'
 import rootSaga from './Sagas/Sagas.js'
 
+import ProjectList from "./Interface/projectList.js";
+
 export const store = configureStore()
 
 store.runSaga(rootSaga)
 
 ReactDOM.render(
     <Provider store={store}>
-        <div>
-            Task Manager first page
-        </div>
+        <ProjectList />
     </Provider>,
     document.getElementById('root')
 );
