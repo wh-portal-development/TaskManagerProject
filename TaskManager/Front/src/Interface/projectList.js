@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
+import Table from 'react-bootstrap/Table';
 
 import * as actionCreators from "../Store/actionCreators.js";
 
@@ -16,24 +17,26 @@ class projectList extends Component {
     render() {
         let projects = this.props.projectList.map(
             (project) => 
-            <tr>
-                <td>{project.Name}</td>
-                <td>{project.TLA}</td>
-                <td>{project.Description}</td>
+            <tr key = {project.id}>
+                <td>{project.name}</td>
+                <td>{project.tla}</td>
+                <td>{project.description}</td>
             </tr>
         );
-
+        projects = <tbody>{projects}</tbody>
         
         return (
-            <table>
+            <Table striped bordered hover>
                 <caption>Projects</caption>
+                <thead>
                 <tr>
                     <th>Name</th>
                     <th>TLA</th>
                     <th>Description</th>
                 </tr>
+                </thead>
                 {projects}
-            </table>
+            </Table>
         )
     }
 }

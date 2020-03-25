@@ -28,8 +28,12 @@ function* watchgetProjects(){
 
 function* getProjects(action) {
     try {
-        const responce = yield call(fetch, "http://localhost:59257/projects/all");
-        const retrievedProjects = JSON.parse(responce.json());
+        const response = yield call(fetch, "https://localhost:44362/projects/all");
+        console.log(response);
+        let retrievedProjects = yield call([response, response.json]);
+        console.log(retrievedProjects);
+        //retrievedProjects = retrievedProjects.map((elem) => JSON.parse(elem));
+        console.log(retrievedProjects);
         yield put(ActionCreators.projectList(retrievedProjects));
         yield put(ActionCreators.setIsLoadingFlag(false));
     } catch (error) {
